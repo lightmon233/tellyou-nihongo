@@ -63,6 +63,12 @@
   parent = "xbr"
 
 [[main]]
+  name = "阿飞初下"
+  weight = 25
+  url = "/docs/新版标准日本语初级下册/阿飞老师/第二十五课/"
+  parent = "xbr"
+
+[[main]]
   name = "饼干中上"
   weight = 30
   url = "/docs/新版标准日本语中级上册/饼干老师/001基础知识总结/"
