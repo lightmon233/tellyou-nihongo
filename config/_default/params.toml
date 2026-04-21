@@ -105,5 +105,5 @@ lastMod = true
 [comments]
   [comments.waline]
     enabled = true
-    serverUrl = "https://tellyou-nihongo.netlify.app/"
+    serverUrl = "https://waline-one-tawny.vercel.app/"
     pageSize = 15
