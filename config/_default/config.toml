@@ -1,4 +1,4 @@
-baseurl = "https://ja.tellyouwhat.cn/"
+baseurl = "https://tellyou-nihongo.netlify.app/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
