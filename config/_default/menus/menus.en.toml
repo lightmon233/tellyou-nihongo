@@ -33,9 +33,9 @@
   identifier = "xbr"
 
 [[main]]
-  name = "阿飞初下"
+  name = "叶子初下"
   weight = 20
-  url = "/docs/新版标准日本语初级下册/阿飞老师/第二十五课/"
+  url = "/docs/新版标准日本语初级下册/叶子老师/26/"
   parent = "xbr"
 
 [[main]]
