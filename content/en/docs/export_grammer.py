@@ -24,7 +24,7 @@ title: ${title}
 toc: false
 date: 2022-08-05T22:39:19+08:00
 lastmod: 2022-08-05T22:39:19+08:00
-contributors: ["HarborZeng"]
+contributors: ["lightmon"]
 ---
 
 """.replace("${title}", '【'+nn.upper()+'】'+grammer_title))
