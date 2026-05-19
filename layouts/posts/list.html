@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-10 col-xl-8">
+    <article>
+      <h1 class="text-center">{{ .Title }}</h1>
+      <p class="lead text-center">{{ .Params.lead | safeHTML }}</p>
+      {{ .Content }}
+    </article>
+    {{ range .Paginator.Pages.ByDate.Reverse }}
+      <article class="my-5">
+        <h2 class="h3"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        {{ partial "main/blog-meta.html" . }}
+        {{ with .Description }}
+          <p>{{ . }}</p>
+        {{ else }}
+          <p>{{ .Summary }}</p>
+        {{ end }}
+        <p><a href="{{ .RelPermalink }}">继续阅读 &rarr;</a></p>
+      </article>
+    {{ end }}
+    {{ template "_internal/pagination.html" . }}
+  </div>
+</div>
+{{ end }}

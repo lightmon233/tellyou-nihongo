@@ -45,6 +45,12 @@
   identifier = "shuffle"
 
 [[main]]
+  name = "Posts"
+  url = "/posts/"
+  weight = 40
+  identifier = "posts"
+
+[[main]]
   name = "关于"
   url = "/about/"
   weight = 999999
