@@ -1,21 +1,21 @@
-const globalDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-const localMode = localStorage.getItem('theme');
+(() => {
+const themeQuery = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
 
-if (globalDark && (localMode === null)) {
-
-  localStorage.setItem('theme', 'dark');
-  document.documentElement.setAttribute('data-dark-mode', '');
-
+function getThemePreference() {
+  const theme = localStorage.getItem('theme');
+  return ['light', 'dark', 'system'].includes(theme) ? theme : 'system';
 }
 
-if (globalDark && (localMode === 'dark')) {
-
-  document.documentElement.setAttribute('data-dark-mode', '');
-
+function getSystemTheme() {
+  return themeQuery && themeQuery.matches ? 'dark' : 'light';
 }
 
-if (localMode === 'dark') {
+function applyThemePreference(preference) {
+  const resolvedTheme = preference === 'system' ? getSystemTheme() : preference;
 
-  document.documentElement.setAttribute('data-dark-mode', '');
-
+  document.documentElement.setAttribute('data-theme-preference', preference);
+  document.documentElement.toggleAttribute('data-dark-mode', resolvedTheme === 'dark');
 }
+
+applyThemePreference(getThemePreference());
+})();

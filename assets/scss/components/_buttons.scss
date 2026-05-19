@@ -42,18 +42,30 @@ body .icon:hover {
 }
 
 body .toggle-dark {
-  display: block;
+  display: none;
 }
 
 body .toggle-light {
   display: none;
 }
 
-[data-dark-mode] body .toggle-light {
+body .toggle-system {
   display: block;
 }
 
-[data-dark-mode] body .toggle-dark {
+[data-theme-preference="dark"] body .toggle-dark {
+  display: block;
+}
+
+[data-theme-preference="dark"] body .toggle-system {
+  display: none;
+}
+
+[data-theme-preference="light"] body .toggle-light {
+  display: block;
+}
+
+[data-theme-preference="light"] body .toggle-system {
   display: none;
 }
 

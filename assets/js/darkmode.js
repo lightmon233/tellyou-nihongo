@@ -1,38 +1,57 @@
+(() => {
 const mode = document.getElementById('mode');
+const themeQuery = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+const themeCycle = ['system', 'dark', 'light'];
+
+function getThemePreference() {
+  const theme = localStorage.getItem('theme');
+  return themeCycle.includes(theme) ? theme : 'system';
+}
+
+function getSystemTheme() {
+  return themeQuery && themeQuery.matches ? 'dark' : 'light';
+}
+
+function applyThemePreference(preference) {
+  const resolvedTheme = preference === 'system' ? getSystemTheme() : preference;
+
+  document.documentElement.setAttribute('data-theme-preference', preference);
+  document.documentElement.toggleAttribute('data-dark-mode', resolvedTheme === 'dark');
+
+  if (mode) {
+    const nextPreference = themeCycle[(themeCycle.indexOf(preference) + 1) % themeCycle.length];
+    const label = `Theme: ${preference}. Click to switch to ${nextPreference}.`;
+
+    mode.setAttribute('aria-label', label);
+    mode.setAttribute('title', label);
+  }
+}
 
 if (mode) {
 
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+  if (themeQuery) {
+    themeQuery.addEventListener('change', () => {
 
-    if (event.matches) {
+      if (getThemePreference() === 'system') {
 
-      localStorage.setItem('theme', 'dark');
-      document.documentElement.setAttribute('data-dark-mode', '');
+        applyThemePreference('system');
 
-    } else {
+      }
 
-      localStorage.setItem('theme', 'light');
-      document.documentElement.removeAttribute('data-dark-mode');
-
-    }
-
-  })
+    });
+  }
 
   mode.addEventListener('click', () => {
 
-    document.documentElement.toggleAttribute('data-dark-mode');
-    localStorage.setItem('theme', document.documentElement.hasAttribute('data-dark-mode') ? 'dark' : 'light');
+    const currentPreference = getThemePreference();
+    const nextPreference = themeCycle[(themeCycle.indexOf(currentPreference) + 1) % themeCycle.length];
+
+    localStorage.setItem('theme', nextPreference);
+    applyThemePreference(nextPreference);
 
   });
 
-  if (localStorage.getItem('theme') === 'dark') {
-
-    document.documentElement.setAttribute('data-dark-mode', '');
-
-  } else {
-
-    document.documentElement.removeAttribute('data-dark-mode');
-
-  }
+  applyThemePreference(getThemePreference());
 
 }
+})();
