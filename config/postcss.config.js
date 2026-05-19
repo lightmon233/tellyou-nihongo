@@ -33,6 +33,7 @@ module.exports = {
         'resources',
         'space-no-wrap',
         'no-print',
+        'wrap',
         'table-container',
         'h2-section',
         'footnotes',

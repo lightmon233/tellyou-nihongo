@@ -13,6 +13,34 @@
   max-width: 100%;
 }
 
+html {
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.wrap {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+.home .wrap {
+  flex: 0 0 auto;
+}
+
+.home .footer {
+  margin-top: auto;
+}
+
+.home .wrap + .section {
+  margin-top: clamp(2rem, 10vh, 7rem);
+  padding-top: 0;
+}
+
 h1,
 h2,
 h3,
