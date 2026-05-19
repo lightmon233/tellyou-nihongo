@@ -35,8 +35,14 @@
 [[main]]
   name = "叶子初下"
   weight = 20
-  url = "/docs/新版标准日本语初级下册/叶子老师/第二十六课/"
+  url = "/docs/新版标准日本语初级/叶子老师/第二十六课/"
   parent = "xbr"
+
+[[main]]
+  name = "shuffle"
+  url = "/shuffle/"
+  weight = 30
+  identifier = "shuffle"
 
 [[main]]
   name = "关于"
