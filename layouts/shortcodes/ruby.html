@@ -1,0 +1,3 @@
+{{- $text := cond .IsNamedParams (.Get "text") (.Get 0) -}}
+{{- $rt := cond .IsNamedParams (.Get "rt") (.Get 1) -}}
+<ruby>{{ $text }}<rt>{{ $rt }}</rt></ruby>

@@ -5,7 +5,7 @@
       <h1>{{ .Title }}</h1>
       {{ partial "main/blog-meta.html" . }}
       <p class="lead">{{ .Params.lead | safeHTML }}</p>
-      {{ .Content }}
+      {{ partial "main/render-content.html" (dict "Content" .Content) }}
     </article>
   </div>
 </div>
