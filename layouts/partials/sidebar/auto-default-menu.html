@@ -2,6 +2,14 @@
 {{ $currentPage := . -}}
 {{ $section := $currentPage.Section -}}
 {{ range (where .Site.Sections "Section" "in" $section) }}
+  {{ if .RegularPages }}
+    <ul class="list-unstyled">
+    {{ range .RegularPages }}
+      {{ $active := in $currentPage.RelPermalink .RelPermalink }}
+      <li><a class="docs-link{{ if $active }} active{{ end }}" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+    {{ end }}
+    </ul>
+  {{ end }}
   {{ range .Sections.Reverse }}
     {{ $active := in $currentPage.RelPermalink .RelPermalink }}
     <h3 class="h6 text-uppercase mb-2">{{ .Title }}</h3>

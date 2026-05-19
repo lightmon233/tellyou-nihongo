@@ -9,7 +9,7 @@ for f in fs:
   content = open(f).read()
   if f.startswith('新版标准日本语初级上册'):
     nn = 'xbr-p1'
-  elif f.startswith('新版标准日本语初级下册'):
+  elif f.startswith('新版标准日本语初级'):
     nn = 'xbr-p2'
   elif f.startswith('五十音'):
     continue
