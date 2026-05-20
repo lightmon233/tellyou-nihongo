@@ -2,6 +2,8 @@
 
 This is a Markdown-based Japanese learning blog system built on [Doks](https://github.com/thuliteio/doks), featuring real-time TTS support inspired by the techniques used in [ReadAloud](https://github.com/guozhigq/ReadAloud).
 
+This repository is a fork of [harborzeng/tellyou-nihongo](https://github.com/harborzeng/tellyou-nihongo), and can also be considered a fork of the [thuliteio/doks](https://github.com/thuliteio/doks) theme.
+
 > **⚠️ Warning:** This project is currently in a "just works" state and requires ongoing maintenance and updates. Contributions to improve stability and functionality are welcome.
 
 ## Content Authoring
