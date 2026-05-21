@@ -31,7 +31,7 @@
     "precheck": "npm version",
     "check": "exec-bin node_modules/.bin/hugo/hugo version",
     "copy:katex-fonts": "shx cp ./node_modules/katex/dist/fonts/* ./static/fonts/",
-    "postinstall": "hugo-installer --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo",
+    "postinstall": "node scripts/install-hugo.mjs --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo",
     "version": "auto-changelog -p && git add CHANGELOG.md",
     "server:wsl2": "exec-bin node_modules/.bin/hugo/hugo server --bind 0.0.0.0 --baseURL http://$(ip -j -f inet addr | /usr/bin/jq -r '.[] | select(.ifname==\"eth0\") | .addr_info[0].local')"
   },
@@ -48,7 +48,6 @@
     "exec-bin": "^1.0.0",
     "flexsearch": "^0.7.21",
     "highlight.js": "^11.6",
-    "hugo-installer": "^3.1",
     "instant.page": "^5.1",
     "katex": "^0.16",
     "lazysizes": "^5.3",
