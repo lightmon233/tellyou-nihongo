@@ -46,6 +46,26 @@
   padding: 0 8px;
 }
 
+.ja-note {
+  border-left: 3px solid $gray-300;
+  margin: 1rem 0;
+  padding: 0.25rem 0 0.25rem 1rem;
+}
+
+.ja-note__ja p,
+.ja-note__zh p {
+  display: inline;
+}
+
+.ja-note__zh {
+  color: $gray-600;
+  margin-top: 0.25rem;
+}
+
+.ja-note__machine-translation {
+  margin: 0.75rem 0 0;
+}
+
 .doflip {
   transform-origin: 43% 50%;
   -moz-transform-origin: 43% 50%;

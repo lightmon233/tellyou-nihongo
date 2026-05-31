@@ -12,7 +12,21 @@ images: []
 
 ## 关于发音和翻译
 
-例句的发音和翻译目前仅提供正文无序列表的子项有发音和翻译按钮。
+例句的发音和翻译仅提供给 `ja-note` 笔记块的第一行日语文本。普通 Markdown 段落和列表不会显示发音和翻译按钮。
+
+```md
+{{</* ja-note */>}}
+日本語の勉強は楽しいです。
+学习日语很有趣。
+{{</* /ja-note */>}}
+```
+
+效果示例：
+
+{{< ja-note >}}
+日本語の勉強は楽しいです。
+学习日语很有趣。
+{{< /ja-note >}}
 
 ### 发音
 
@@ -33,4 +47,3 @@ images: []
 
 1. [腾讯翻译API接口](https://cloud.tencent.com/document/api/551/15619)
 2. [Netlify Functions](https://www.netlify.com/products/functions/)
-

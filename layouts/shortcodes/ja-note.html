@@ -1,0 +1,10 @@
+{{- $inner := trim .Inner "\r\n " -}}
+{{- $lines := split $inner "\n" -}}
+{{- $ja := trim (index $lines 0) "\r " -}}
+{{- $zh := trim (delimit (after 1 $lines) "\n") "\r\n " -}}
+<div class="ja-note">
+  <div class="ja-note__ja" lang="ja">{{ $ja | markdownify }}</div>
+  {{- with $zh }}
+  <div class="ja-note__zh">{{ . | markdownify }}</div>
+  {{- end }}
+</div>

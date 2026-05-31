@@ -6,7 +6,7 @@ const { SECRET_ID } = process.env;
 const { SECRET_KEY } = process.env;
 
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
   const clientConfig = {
     credential: {
       secretId: SECRET_ID,
@@ -26,7 +26,7 @@ exports.handler = async (event, context) => {
     'SourceText': event.body,
     'Source': 'ja',
     'Target': 'zh',
-    'ProjectId': 0
+    'ProjectId': 0,
   };
   return client.TextTranslate(params)
     .then((data) => ({
@@ -38,6 +38,6 @@ exports.handler = async (event, context) => {
           statusCode: 400,
           body: err,
         }
-      }
+      },
     ).catch((error) => ({statusCode: 422, body: String(error)}));
 };

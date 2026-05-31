@@ -24,6 +24,7 @@ module.exports = {
         'container-fluid',
         'doflip',
         'btn-translate',
+        'ja-note__machine-translation',
         't-placeholder',
         't-animated-background',
         'game',

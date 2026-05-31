@@ -49,6 +49,19 @@ Use text after the callout marker for a custom title:
 
 Supported callout types are `NOTE`, `TIP`, `IMPORTANT`, `WARNING`, `CAUTION`, and `BUG`.
 
+### Japanese notes
+
+Use the `ja-note` shortcode for a Japanese sentence followed by your own Chinese annotation:
+
+```md
+{{< ja-note >}}
+日本語の勉強は楽しいです。
+学习日语很有趣。
+{{< /ja-note >}}
+```
+
+Only the first line rendered by this shortcode receives browser speech and Tencent translation buttons. Regular Markdown paragraphs and lists do not receive these controls.
+
 ## Deploy Locally
 
 ### 1. Configuration
