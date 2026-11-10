@@ -1,0 +1,57 @@
+{{- $rawURL := .Get 0 | default "" -}}
+{{- $url := "" -}}
+{{- $host := "" -}}
+{{- $card := dict "title" ($rawURL | default "Blog card") "description" "" "image" "" "favicon" "" "unavailable" true -}}
+{{- with try (urls.Parse $rawURL) -}}
+  {{- if not .Err -}}
+    {{- if and (in (slice "http" "https") (lower .Value.Scheme)) .Value.Host -}}
+      {{- $url = .Value.String -}}
+      {{- $host = .Value.Host -}}
+      {{- $card = partialCached "blogcard/metadata.html" .Value $url -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- if not $url -}}
+  {{- warnf "blogcard: expected an absolute HTTP(S) URL, got %q" $rawURL -}}
+{{- end -}}
+
+{{- $quality := 80 -}}
+{{- with .Site.Params.imageQuality -}}
+  {{- with try (int .) -}}
+    {{- if not .Err -}}
+      {{- if and (ge .Value 1) (le .Value 100) -}}
+        {{- $quality = .Value -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $thumbnail := partial "blogcard/thumbnail.html" (dict "image" $card.image "fallback" (.Site.Params.defaultNoimage | default "") "quality" $quality) -}}
+
+{{- partial "blogcard/styles.html" .Page -}}
+{{- if $url -}}
+<a class="blogcard{{ if $card.unavailable }} blogcard--unavailable{{ end }}" href="{{ $url }}">
+{{- else -}}
+<span class="blogcard blogcard--unavailable">
+{{- end }}
+  <span class="blogcard__content">
+    <strong class="blogcard__title">{{ $card.title }}</strong>
+    {{- with $card.description }}
+    <span class="blogcard__description">{{ . }}</span>
+    {{- end }}
+    {{- with $host }}
+    <span class="blogcard__source">
+      {{- with $card.favicon }}
+      <img class="blogcard__favicon" src="{{ . }}" alt="" width="16" height="16" loading="lazy" decoding="async">
+      {{- end }}
+      <span>{{ $host }}</span>
+    </span>
+    {{- end }}
+  </span>
+  {{- with $thumbnail }}
+  <img class="blogcard__thumbnail" src="{{ . }}" alt="" width="100" height="100" loading="lazy" decoding="async">
+  {{- end }}
+{{- if $url }}
+</a>
+{{- else }}
+</span>
+{{- end -}}

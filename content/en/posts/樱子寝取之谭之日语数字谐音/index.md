@@ -11,6 +11,8 @@ contributors: []
 
 游戏地址在[DLsite](https://www.dlsite.com/maniax/work/=/product_id/RJ01511074.html)；
 
+{{< blogcard "https://www.dlsite.com/maniax/work/=/product_id/RJ01511074.html" >}}
+
 这个游戏要达成好结局的条件主要就是要解开ダイヤル[錠]^(じょう)(意为Dial锁，拨号锁)上的两层密码，从中获得宝珠来解除诅咒。
 
 ![diallock](diallock.png)
